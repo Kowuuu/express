@@ -1,0 +1,44 @@
+<!-- views/admin/jobs-search-results.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Job Search Results</title>
+    <!-- Dynamic Google Font loading -->
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Link to the clean results configuration stylesheet -->
+    <link rel="stylesheet" href="/css/results.css">
+</head>
+<body>
+
+<div class="results-container">
+    <h1>Job Search Results</h1>
+
+    <% if (!jobs || jobs.length === 0) { %>
+        <p class="empty-msg">❌ No jobs found matching your criteria.</p>
+    <% } else { %>
+        <ul>
+            <% jobs.forEach(job => { %>
+                <!-- Packaged title and salary into a unified scannable data list row -->
+                <li class="job-result-item">
+                    <span class="job-title"><%= job.title %></span>
+
+                    <% if (job.salary) { %>
+                        <span class="job-salary">$<%= job.salary.toLocaleString() %></span>
+                    <% } else { %>
+                        <span class="no-salary">Open Salary</span>
+                    <% } %>
+                </li>
+            <% }) %>
+        </ul>
+    <% } %>
+
+    <!-- This anchor now mimics a beautiful, modern action block -->
+    <a href="/admin/jobs" class="btn-back">Back to dashboard</a>
+</div>
+
+</body>
+</html>

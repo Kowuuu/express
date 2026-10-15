@@ -1,0 +1,9 @@
+<form method="POST" action="/auth/register">
+    <% if(error) { %>
+        <p><%- error %></p>
+    <% } %>
+    <input type="text" name="name" placeholder="unesi ime"><br>
+    <input type="text" name="email" placeholder="unesi email" />
+    <input type="password" name="password" placeholder="unesi password" />
+    <button>Register</button>
+</form>
